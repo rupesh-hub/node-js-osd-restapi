@@ -34,7 +34,10 @@ module.exports = {
 
       res
         .status(201)
-        .json({ success: true, message: "City added successfully!" });
+        .json({ 
+			success: true, 
+			message: "City added successfully!" 
+		});
     } catch (error) {
       console.error("Server error:", error);
       res.status(500).json({

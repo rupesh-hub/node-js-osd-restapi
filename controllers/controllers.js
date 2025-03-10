@@ -37,6 +37,17 @@ module.exports = {
 
       req.body.password = hashedPassword;
 
+      // fetch role by name
+      const role = await db.fetchRole(req, res, next);
+      if (!role) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid role name. Please provide a valid role name.",
+        });
+      }
+
+      req.role = role.name;
+
       // Insert user into database
       await db.registerUser(req);
 
