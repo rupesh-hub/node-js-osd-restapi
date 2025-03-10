@@ -1,0 +1,108 @@
+extends layout 
+
+block content 
+    h1 Cities List
+
+    .container
+        .left 
+            h2 City Table
+            table
+                thead
+                    tr
+                        th Name
+                        th Country Code
+                        th District
+                        th Population
+                tbody
+                    each city in cities
+                        tr
+                            td= city.name
+                            td= city.countrycode
+                            td= city.district
+                            td= city.population
+        
+        .right 
+            h2 Add City
+            form(action="/cities" method="POST" class="city-form")
+                .form-group
+                    label(for="name") Name:
+                    input(type="text" name="name" required placeholder="Enter city name")#name
+                .form-group
+                    label(for="countrycode") Country Code:
+                    input(type="text" name="countrycode" required placeholder="Enter country code")#countrycode
+                .form-group
+                    label(for="district") District:
+                    input(type="text" name="district" required placeholder="Enter district")#district
+                .form-group
+                    label(for="population") Population:
+                    input(type="number" name="population" required placeholder="Enter population")#population
+                .form-group
+                    button(type="submit") ADD
+
+    style.
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .left, .right {
+            flex: 1;
+        }
+
+        h2 {
+            font-family: serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .city-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #f5f5f5;
+            color: #000;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: serif;
+            font-weight: 600;
+        }

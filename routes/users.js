@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticationMiddleware = require('../util/authentication.middleware');
+const authenticationMiddleware = require("../util/authentication.middleware");
 
 const con = require("../controllers/controllers");
 
@@ -27,7 +27,11 @@ router.post("/login", con.authenticateUser, (req, res, next) => {
   res.json({ login: "failed, please try again" });
 });
 
-router.get("/logout", con.logoutUser, authenticationMiddleware, (req, res, next) => {
-  });
+router.get(
+  "/logout",
+  con.logoutUser,
+  authenticationMiddleware,
+  (req, res, next) => {}
+);
 
 module.exports = router;

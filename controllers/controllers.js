@@ -48,7 +48,7 @@ module.exports = {
       console.error("Registration error:", error);
       res.status(500).json({
         success: false,
-        message: "Server error. Please try again later.",
+        message: "Server error! Error adding new user.",
       });
     }
   },
@@ -87,12 +87,12 @@ module.exports = {
     } catch (error) {}
   },
 
-  logoutUser:async (req, res, next) => {
+  logoutUser: async (req, res, next) => {
     res.clearCookie("access_token", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
     });
     res.json({ success: true, message: "Logged out successfully." });
-  }
+  },
 };
