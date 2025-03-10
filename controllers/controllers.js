@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const db = require("../models/dbhandlers");
-const {generateTokenAndSetCookie} = require("../util/helper");
+const generateTokenAndSetCookie = require("../util/helper");
 
 // Register user
 module.exports = {
