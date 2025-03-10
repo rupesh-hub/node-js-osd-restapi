@@ -3,6 +3,7 @@ const router = express.Router();
 
 const conw = require('../controllers/controllersworld');
 const con = require('../controllers/controllers');
+const authenticationMiddleware = require('../util/authentication.middleware');
 
 const TITLE = 'Rest API Pattern Project';
 
@@ -17,25 +18,25 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET continents */
-router.get('/continents', conw.getContinents, function (req, res) {
+router.get('/continents', conw.getContinents, authenticationMiddleware, function (req, res) {
 	// variables from middleware
 	res.json({continents: res.locals.continents});
 });
 
 /* GET countries */
-router.get('/countries', conw.getCountries, function (req, res) {
+router.get('/countries', conw.getCountries, authenticationMiddleware, function (req, res) {
 	// variables from middleware
 	res.json({countries: res.locals.countries});
 });
 
 /* GET cities */
-router.get('/cities', conw.getCities, function (req, res) {
+router.get('/cities', conw.getCities, authenticationMiddleware, function (req, res) {
 	// variables from middleware
 	res.json({cities: res.locals.cities});
 });
 
 /* GET languages */
-router.get('/languages', conw.getLanguages, function (req, res) {
+router.get('/languages', conw.getLanguages, authenticationMiddleware, function (req, res) {
 	// variables from middleware
 	res.json({languages: res.locals.languages});
 });
