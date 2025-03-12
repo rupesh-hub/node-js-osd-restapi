@@ -91,16 +91,14 @@ module.exports = {
 
   /* User management */
   registerUser: async function (req, res, next) {
-    const { email, password, profile, bio, role } = req.body;
-    if (!profile) {
-      profile = "";
-    }
+    const { email, password, profile, bio } = req.body;
+   
     try {
       let db = await connect();
       let sql =
-        "INSERT INTO user (email, password, profile, bio, role) VALUES (?,?,?,?, ?)";
+        "INSERT INTO user (email, password, profile, bio) VALUES (?,?,?,?)";
       let query = db.prepare(sql);
-      let result = await query.run(email, password, profile, bio, role);
+      let result = await query.run(email, password, "", bio);
       return { message: "User registered successfully!", result };
     } catch (err) {
       res.status(400).json(err.message);
