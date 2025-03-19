@@ -1,6 +1,7 @@
 const jwt =  require("jsonwebtoken");
 
  const generateTokenAndSetCookie = (res, user) => {
+  const secret_key = process.env.SECRET_KEY || '12345678910'; // may not be good way to do this
   const token = jwt.sign(
     {
       userId: user._id,
@@ -8,7 +9,7 @@ const jwt =  require("jsonwebtoken");
       profile: user.profile,
       bio: user.bio,
     },
-    process.env.SECRET_KEY,
+    secret_key,
     {
       expiresIn: "7d",
     }

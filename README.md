@@ -1,5 +1,7 @@
 # Project Restapi
 
+Dont forget to add .env file with SECRET_KEY for JWT Authentication
+
 The project is a skeleton of a REST API project
 working with the World database in an adapted
 Sqlite3 edition.
